@@ -1,26 +1,99 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
+
+/*
+********************************************************
+          Define
+********************************************************
+*/
+
+let baseURL = ''
+
+if(process.env.NODE_ENV === 'development'){
+  baseURL = 'http://localhost:3003'
+} else {
+  baseURL = 'https://fathomless-sierra-68956.herokuapp.com'
+}
+  console.log(baseURL);
+
+
+
+/*
+********************************************************
+           BEGIN OF CLASS
+********************************************************
+*/
+
+
+ class App extends React.Component {
+
+
+   /*
+   ********************************************************
+       WAITS FOR BROWSER BEFORE GRABS INFO FROM SERVER
+   ********************************************************
+   */
+
+
+
+   /*
+  ********************************************************
+             GRABS RECIPES FROM SERVER
+  ********************************************************
+  */
+
+
+
+
+
+  /*
+  ********************************************************
+              ADDS NEW RECIPES
+  ********************************************************
+  */
+
+
+
+
+  /*
+********************************************************
+          Delete RECIPES
+********************************************************
+*/
+
+
+
+
+
+/*
+********************************************************
+           UPDATE RECIPESS
+********************************************************
+*/
+
+
+
+
+
+
+/*
+********************************************************
+           RENDER
+********************************************************
+*/
+
+
+  render(){
   return (
+
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>hi</h1>
+
     </div>
-  );
+  )
+
+}
 }
 
 export default App;
