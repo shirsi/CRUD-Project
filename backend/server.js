@@ -45,7 +45,8 @@ mongoose.connection.once('open', () => {
           CONTROLLERS
 ********************************************************
 */
-
+const recipesController = require('./controllers/recipes.js')
+app.use('/recipes', recipesController)
 
 
 
