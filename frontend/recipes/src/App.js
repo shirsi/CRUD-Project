@@ -1,5 +1,6 @@
 import React from 'react'
 import New from './components/New'
+import Show from './components/Show'
 /*
 ********************************************************
           Define
@@ -55,8 +56,6 @@ if(process.env.NODE_ENV === 'development'){
 
 
 
-
-
    /*
   ********************************************************
              GRABS RECIPES FROM SERVER
@@ -88,7 +87,7 @@ if(process.env.NODE_ENV === 'development'){
             this.setState({
               recipes: copyRecipes,
               name: '',
-              ingredients: [],
+              ingredients: '',
               directions: '',
               image: '',
               serving: '',
@@ -210,10 +209,9 @@ if(process.env.NODE_ENV === 'development'){
 
   render(){
   return (
-
-
     <div className="App">
       <h1>Recipes</h1>
+      <div className='recipe-container'>
       <New baseURL={baseURL} handleAddRecipe={this.handleAddRecipe}/>
       <table>
       <tbody>
@@ -237,20 +235,18 @@ if(process.env.NODE_ENV === 'development'){
                     recipe.likes? 'likes': 'no likes'
                   }
                   </td>
-
               </tr>
-
-
-
             )
           })
         }
-
-
-
-
       </tbody>
       </table>
+      {
+        this.state.recipe
+        ? <Show recipe={this.state.recipe}/>
+        : null
+      }
+      </div>
     </div>
   )
 
