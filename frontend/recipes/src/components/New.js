@@ -4,7 +4,7 @@ class New extends React.Component {
     super(props)
     this.state = {
       name: '',
-      ingredients: [],
+      // ingredients: [],
       directions:'',
       image:'',
       serving:'',
@@ -28,18 +28,19 @@ class New extends React.Component {
         method:'POST',
         body:JSON.stringify({
           name: this.state.name,
-          ingredients: this.state.ingredients,
+          // ingredients: this.state.ingredients,
           directions: this.state.directions,
           image: this.state.image,
           serving: this.state.serving,
           likes: this.state.likes
         }),
-        header:{
-          'Content-Type': 'application/json'
+        headers:{
+          'Content-Type':'application/json'
         }
       }
     )
     let data = await response.json()
+
     this.props.handleAddRecipe(data)
     this.setState({
       name: '',

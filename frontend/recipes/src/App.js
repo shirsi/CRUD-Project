@@ -86,7 +86,13 @@ if(process.env.NODE_ENV === 'development'){
           handleAddRecipe(recipe){
             const copyRecipes = [recipe, ...this.state.recipes]
             this.setState({
-              recipes: copyRecipes
+              recipes: copyRecipes,
+              name: '',
+              ingredients: [],
+              directions: '',
+              image: '',
+              serving: '',
+              likes: ''
             })
           }
 
