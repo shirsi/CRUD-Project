@@ -36,7 +36,7 @@ if(process.env.NODE_ENV === 'development'){
      this.getRecipes = this.getRecipes.bind(this)
      this.getRecipe = this.getRecipe.bind(this)
      // this.deleteRecipe = this.deleteRecipe.bind(this)
-     // this.toggleLikes = this.toggleLikes.bind(this)
+     this.toggleLikes = this.toggleLikes.bind(this)
    }
 
 
@@ -158,35 +158,40 @@ if(process.env.NODE_ENV === 'development'){
            UPDATE RECIPES
 ********************************************************
 */
-        // async toggleLikes (recipe){
-        //   console.log(recipe)
-        //   try {
-        //     let response = await fetch( `${baseURL}/recipes/${id}`, {
-        //       method: PUT,
-        //       body: JSON.stringify({likes: !recipe.likes}),
-        //       header:{
-        //         'Content-type': 'application/json'
-        //       }
-        //     })
-        //
-        //     let updatedRecipe =  await response.json()
-        //
-        //     const foundRecipe = this.state.recipe.findIndex(recipeFound=>
-        //       recipeFound._id === recipe._id
-        //     )
-        //
-        //   const copyRecipes = [...this.state.recipes]
-        //
-        //   copyRecipes[foundRecipe].likes = updatedRecipe.toggleLikes
-        //
-        //   this.setState({
-        //     recipes: copyRecipes
-        //   })
-        //
-        // }catch(e){
-        //   console.error(e)
-        // }
-        // }
+        async toggleLikes (recipe){
+          console.log(recipe)
+          try {
+            let response = await fetch( `${baseURL}/recipes/${recipe._id}`, {
+              method: 'PUT',
+              body: JSON.stringify({likes: !recipe.likes}),
+              header:{
+                'Content-type': 'application/json'
+              }
+            })
+
+              console.log({likes: !recipe.likes});
+            let updatedRecipe =  await response.json()
+
+            console.log(updatedRecipe)
+
+            const foundRecipe = this.state.recipes.findIndex(recipeFound=>
+              recipeFound._id === recipe._id
+            )
+            console.log(foundRecipe);
+
+          const copyRecipes = [...this.state.recipes]
+
+          copyRecipes[foundRecipe].likes = updatedRecipe.likes
+
+          console.log(updatedRecipe);
+          this.setState({
+            recipes: copyRecipes
+          })
+
+        }catch(e){
+          console.error(e)
+        }
+        }
 
 
 
@@ -213,6 +218,12 @@ if(process.env.NODE_ENV === 'development'){
                 <td onMouseOver = { () => {
                     this.getRecipe(recipe)}}>
                     {recipe.name}
+                  </td>
+                  <td onClick = {() => {
+                    this.toggleLikes(recipe)
+                  }}> {
+                    recipe.likes? 'likes': 'no likes'
+                  }
                   </td>
 
               </tr>
