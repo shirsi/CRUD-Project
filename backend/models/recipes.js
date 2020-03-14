@@ -6,7 +6,7 @@ const recipesSchema = mongoose.Schema({
   directions: String,
   image: String,
   serving: String,
-  likes: Boolean,
+  likes:{ type: Boolean, default: false},
 })
 
 
