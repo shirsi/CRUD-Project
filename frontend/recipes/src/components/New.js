@@ -11,14 +11,17 @@ class New extends React.Component {
       likes: false
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }//constructor end
   handleChange(event){
     this.setState({
       [event.currentTarget.id]: event.currentTarget.value
     })
   }
+
   async handleSubmit(event){
     event.preventDefault()
+    console.log(this.props.baseURL);
     try{
       let response = await fetch(this.props.baseURL + '/recipes',
       {

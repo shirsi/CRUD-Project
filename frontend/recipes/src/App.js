@@ -1,14 +1,12 @@
 import React from 'react'
-
-
+import New from './components/New'
 /*
 ********************************************************
           Define
 ********************************************************
 */
 
-let baseURL = 'http://localhost:3003'
-
+let baseURL = process.env.REACT_APP_BASEURL
 if(process.env.NODE_ENV === 'development'){
   baseURL = 'http://localhost:3003'
 } else {
@@ -37,6 +35,7 @@ if(process.env.NODE_ENV === 'development'){
      this.getRecipe = this.getRecipe.bind(this)
      // this.deleteRecipe = this.deleteRecipe.bind(this)
      this.toggleLikes = this.toggleLikes.bind(this)
+     this.handleAddRecipe = this.handleAddRecipe.bind(this)
    }
 
 
@@ -77,22 +76,22 @@ if(process.env.NODE_ENV === 'development'){
           console.error(e)
         }
       }
-      c
+
 
   /*
   ********************************************************
               ADDS NEW RECIPES
   ********************************************************
-  // */
-  //         handleAddRecipes(){
-  //           const copyRecipes = [recipes, ...this.state.recipes]
-  //           this.setState({
-  //             recipes: copyRecipes
-  //           })
-  //         }
-  //
-  //
-  //
+  */
+          handleAddRecipe(recipe){
+            const copyRecipes = [recipe, ...this.state.recipes]
+            this.setState({
+              recipes: copyRecipes
+            })
+          }
+
+
+
 
 
 
@@ -164,7 +163,7 @@ if(process.env.NODE_ENV === 'development'){
             let response = await fetch( `${baseURL}/recipes/${recipe._id}`, {
               method: 'PUT',
               body: JSON.stringify({likes: !recipe.likes}),
-              header:{
+              headers:{
                 'Content-type': 'application/json'
               }
             })
@@ -209,6 +208,7 @@ if(process.env.NODE_ENV === 'development'){
 
     <div className="App">
       <h1>Recipes</h1>
+      <New baseURL={baseURL} handleAddRecipe={this.state.handleAddRecipe}/>
       <table>
       <tbody>
         {
