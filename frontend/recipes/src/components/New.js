@@ -35,7 +35,7 @@ class New extends React.Component {
           likes: this.state.likes
         }),
         header:{
-          'Content-Type':'application/json'
+          'Content-Type': 'application/json'
         }
       }
     )
