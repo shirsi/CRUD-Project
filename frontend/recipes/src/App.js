@@ -208,7 +208,7 @@ if(process.env.NODE_ENV === 'development'){
 
     <div className="App">
       <h1>Recipes</h1>
-      <New baseURL={baseURL} handleAddRecipe={this.state.handleAddRecipe}/>
+      <New baseURL={baseURL} handleAddRecipe={this.handleAddRecipe}/>
       <table>
       <tbody>
         {

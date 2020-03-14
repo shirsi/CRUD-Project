@@ -40,7 +40,6 @@ class New extends React.Component {
       }
     )
     let data = await response.json()
-    
     this.props.handleAddRecipe(data)
     this.setState({
       name: '',
