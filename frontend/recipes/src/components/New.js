@@ -34,12 +34,13 @@ class New extends React.Component {
           serving: this.state.serving,
           likes: this.state.likes
         }),
-        header:{
+        headers:{
           'Content-Type':'application/json'
         }
       }
     )
     let data = await response.json()
+    console.log(data);
     this.props.handleAddRecipe(data)
     this.setState({
       name: '',
