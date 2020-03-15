@@ -20,20 +20,44 @@ h1{
   text-align: center;
 }
 
+.App{
+  background-image: url('https://thepaintpeople.com/wp-content/uploads/2015/09/prepare-bare-wood-staining.jpg');
+  height: 100vh;
+
+}
 
 img {
   height: 30vh;
   width: 30vw;
 }
 
-.card {
-  padding-bottom: 3em
+
+.card-body {
+    background-color:rgb(241,209,160, 0.2);
+  padding-bottom: 4em;
 }
 
 input[type = submit]{
   margin-top: 0.5em;
 }
 
-button{
-  background-color: pink;
+.main {
+  padding-top: 3em;
+  color: rgb(192,56,44);
+
+
+}
+
+table {
+  background: rgb(241,209,160, 0.5);
+  padding: 1em;
+  padding-bottom: 50px;
+}
+ form {
+   font-size: 50px;
+   background: rgb(241,209,160, 0.5);
+   padding: 1em;
+ }
+footer {
+  padding-top: 3em;
 }
