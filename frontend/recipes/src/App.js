@@ -227,12 +227,12 @@ if(process.env.NODE_ENV === 'development'){
                     () => {
                       this.deleteRecipe(recipe._id)
                     }
-                  }>X
+                  }>
                   </td>
                   <td onClick = {() => {
                     this.toggleLikes(recipe)
                   }}> {
-                    recipe.likes? 'likes': 'no likes'
+                    recipe.likes? '❤️': '🤍'
                   }
                   </td>
               </tr>
