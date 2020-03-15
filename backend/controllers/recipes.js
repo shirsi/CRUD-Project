@@ -16,7 +16,7 @@ recipes.get('/', (req, res) => {
 recipes.post('/', (req, res) => {
   Recipes.create(req.body, (err, createdRecipes) => {
     if(err){
-      res.status(400).json({error: error.message})
+      res.status(400).json({error: err.message})
     }
     res.status(200).json(createdRecipes)
   })
@@ -25,7 +25,7 @@ recipes.post('/', (req, res) => {
 recipes.delete('/:id', (req, res) => {
   Recipes.findByIdAndRemove(req.params.id, (err, deletedHoliday) => {
     if(err){
-      res.status(400).json({error: error.message})
+      res.status(400).json({error: err.message})
     }
     res.status(200).json(deletedHoliday)
   })
@@ -34,7 +34,7 @@ recipes.delete('/:id', (req, res) => {
 recipes.put('/:id', (req, res) => {
   Recipes.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedRecipe) => {
     if(err){
-      res.status(400).json({error: error.message})
+      res.status(400).json({error: err.message})
     }
     res.status(200).json(updatedRecipe)
   })
