@@ -59,17 +59,33 @@ class New extends React.Component {
   render(){
     return(
       <form onSubmit={this.handleSubmit}>
+
+        <div className="form-group">
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="add a recipe"/><br/>
-        <label htmlFor="ingredients">Ingredients</label>
-        <input type="text" id="ingredients" name="ingredients" onChange={this.handleChange} value={this.state.ingredients} placeholder="add ingredients"/><br/>
-        <label htmlFor="directions">directions</label>
-        <input type="text" id="directions" name="directions" onChange={this.handleChange} value={this.state.directions} placeholder="add directions"/><br/>
-        <label htmlFor="images">Images</label>
-        <input type="text" id="images" name="images" onChange={this.handleChange} value={this.state.images} placeholder="add images"/><br/>
-        <label htmlFor="serving">Serving</label>
-        <input type="text" id="serving" name="serving" onChange={this.handleChange} value={this.state.serving} placeholder="add serving"/><br/>
-        <input type="submit" value="Add a Recipe"/>
+        <input type="text" className="form-control"  id="name" name="name" onChange={this.handleChange} value={this.state.name} placeholder="add a recipe"/>
+        </div>
+
+
+        <div className="form-group">
+          <label htmlFor="ingredients">Ingredients</label>
+          <input type="text" id="ingredients" name="ingredients" className="form-control"  onChange={this.handleChange} value={this.state.ingredients} placeholder="add ingredients"/>
+          </div>
+
+        <div className="form-group">
+          <label htmlFor="directions">directions</label>
+          <input type="text" id="directions" name="directions"  className="form-control"  onChange={this.handleChange} value={this.state.directions} placeholder="add directions"/>
+        </div>
+
+        <div className="form-group">
+        <label htmlFor="image">Images</label>
+        <input className="form-control"  type="text" id="image" name="image" onChange={this.handleChange} value={this.state.image} placeholder="add image"/>
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="serving">Serving</label>
+          <input  className="form-control"  type="text" id="serving" name="serving" onChange={this.handleChange} value={this.state.serving} placeholder="add serving"/>
+          <input type="submit" className="btn btn-success" value="Add a Recipe"/>
+        </div>
       </form>
     )
   }

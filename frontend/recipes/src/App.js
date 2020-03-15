@@ -209,7 +209,10 @@ if(process.env.NODE_ENV === 'development'){
 
   render(){
   return (
+
     <div className="App">
+      <header> <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"></link> </header>
+      <div className = '.container'>
       <h1>Recipes</h1>
       <div className='recipe-container'>
       <New baseURL={baseURL} handleAddRecipe={this.handleAddRecipe}/>
@@ -221,9 +224,9 @@ if(process.env.NODE_ENV === 'development'){
               <tr key ={recipe._id}>
                 <td onMouseOver = { () => {
                     this.getRecipe(recipe)}}>
-                    {recipe.name}
+                  <h4>  {recipe.name}</h4>
                   </td>
-                  <td><button onClick = {
+                  <td><button className="btn btn-danger" onClick = {
                     () => {
                       this.deleteRecipe(recipe._id)
                     }
@@ -247,6 +250,7 @@ if(process.env.NODE_ENV === 'development'){
         : null
       }
       </div>
+    </div>
     </div>
   )
 

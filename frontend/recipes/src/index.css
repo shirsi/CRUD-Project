@@ -19,3 +19,21 @@ code {
 h1{
   text-align: center;
 }
+
+
+img {
+  height: 30vh;
+  width: 30vw;
+}
+
+.card {
+  padding-bottom: 3em
+}
+
+input[type = submit]{
+  margin-top: 0.5em;
+}
+
+button{
+  background-color: pink;
+}
