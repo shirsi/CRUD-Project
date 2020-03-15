@@ -3,7 +3,7 @@ import React, {Component} from 'react'
 class Show extends Component {
   render(){
     return(
-      <div className="card"  >
+      <div  className="card"  >
          <img src={this.props.recipe.image}    />
          <div className="card-body">
         <h3 className="card-title">Recipe Info</h3>

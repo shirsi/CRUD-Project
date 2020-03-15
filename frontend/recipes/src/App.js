@@ -226,18 +226,19 @@ if(process.env.NODE_ENV === 'development'){
                     this.getRecipe(recipe)}}>
                   <h4>  {recipe.name}</h4>
                   </td>
+                  <td className= 'hearts' heart onClick = {() => {
+                    this.toggleLikes(recipe)
+                  }}> {
+                    recipe.likes? '❤️': '🤍'
+                  }
+                  </td>
                   <td><button className="btn btn-danger" onClick = {
                     () => {
                       this.deleteRecipe(recipe._id)
                     }
                   }> Delete
                 </button></td>
-                  <td onClick = {() => {
-                    this.toggleLikes(recipe)
-                  }}> {
-                    recipe.likes? '❤️': '🤍'
-                  }
-                  </td>
+
               </tr>
             )
           })
