@@ -1,5 +1,6 @@
 import React from 'react'
 import New from './components/New'
+import Show from './components/Show'
 /*
 ********************************************************
           Define
@@ -33,7 +34,7 @@ if(process.env.NODE_ENV === 'development'){
      }
      this.getRecipes = this.getRecipes.bind(this)
      this.getRecipe = this.getRecipe.bind(this)
-     // this.deleteRecipe = this.deleteRecipe.bind(this)
+     this.deleteRecipe = this.deleteRecipe.bind(this)
      this.toggleLikes = this.toggleLikes.bind(this)
      this.handleAddRecipe = this.handleAddRecipe.bind(this)
    }
@@ -52,8 +53,6 @@ if(process.env.NODE_ENV === 'development'){
       componentDidMount(){
      this.getRecipes()
    }
-
-
 
 
 
@@ -88,7 +87,7 @@ if(process.env.NODE_ENV === 'development'){
             this.setState({
               recipes: copyRecipes,
               name: '',
-              ingredients: [],
+              ingredients: '',
               directions: '',
               image: '',
               serving: '',
@@ -125,36 +124,36 @@ if(process.env.NODE_ENV === 'development'){
 ********************************************************
 */
 
-      //   async deleteRecipe(id){
-      // console.log(`I made a delete rquest to here: ${baseURL}/recipes/${id}`)
-      //
-      //
-      //     try{
-      //       let response = await fetch(`${baseURL}/recipes/${id}`, {
-      //
-      //         method: 'DELETE'
-      //       })
-      //
-      //         let data =  await response.json()
-      //
-      //         const deletedRecipe = this.state.recipes.findIndex(recipe =>
-      //         recipe._id === id)
-      //
-      //         const copyRecipes =[...this.state.recipes]
-      //
-      //         copyRecipes.splice(deletedRecipe, 1)
-      //
-      //         this.setState({
-      //           recipes: copyRecipes
-      //         })
-      //
-      //
-      //       } catch(e){
-      //         console.error(e)
-      //     }
-      //   }
-      //
-      //
+        async deleteRecipe(id){
+      console.log(`I made a delete rquest to here: ${baseURL}/recipes/${id}`)
+
+
+          try{
+            let response = await fetch(`${baseURL}/recipes/${id}`, {
+
+              method: 'DELETE'
+            })
+
+              let data =  await response.json()
+
+              const deletedRecipe = this.state.recipes.findIndex(recipe =>
+              recipe._id === id)
+
+              const copyRecipes =[...this.state.recipes]
+
+              copyRecipes.splice(deletedRecipe, 1)
+
+              this.setState({
+                recipes: copyRecipes
+              })
+
+
+            } catch(e){
+              console.error(e)
+          }
+        }
+
+
 
 
 
@@ -210,10 +209,9 @@ if(process.env.NODE_ENV === 'development'){
 
   render(){
   return (
-
-
     <div className="App">
       <h1>Recipes</h1>
+      <div className='recipe-container'>
       <New baseURL={baseURL} handleAddRecipe={this.handleAddRecipe}/>
       <table>
       <tbody>
@@ -225,26 +223,30 @@ if(process.env.NODE_ENV === 'development'){
                     this.getRecipe(recipe)}}>
                     {recipe.name}
                   </td>
+                  <td onClick = {
+                    () => {
+                      this.deleteRecipe(recipe._id)
+                    }
+                  }>X
+                  </td>
                   <td onClick = {() => {
                     this.toggleLikes(recipe)
                   }}> {
                     recipe.likes? 'likes': 'no likes'
                   }
                   </td>
-
               </tr>
-
-
-
             )
           })
         }
-
-
-
-
       </tbody>
       </table>
+      {
+        this.state.recipe
+        ? <Show recipe={this.state.recipe}/>
+        : null
+      }
+      </div>
     </div>
   )
 
